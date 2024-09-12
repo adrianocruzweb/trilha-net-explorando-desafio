@@ -17,15 +17,21 @@ namespace DesafioProjetoHospedagem.Models
 
         public void CadastrarHospedes(List<Pessoa> hospedes)
         {
-            Suite suite = new Suite();
+            Suite suite = Suite;
+
+            Hospedes = hospedes;
 
             int quantidadeHospedes = ObterQuantidadeHospedes();
 
             bool capacidadeQuarto = true;
 
-            capacidadeQuarto = suite.Capacidade < quantidadeHospedes;
+            capacidadeQuarto = suite.Capacidade < quantidadeHospedes?false:true;
 
-            if (true)
+            /* Console.WriteLine(suite.Capacidade+"suite.Capacidade");
+            Console.WriteLine(quantidadeHospedes+"quantidadeHospedes");
+            Console.WriteLine(capacidadeQuarto+"capacidadeQuarto"); */
+
+            if (capacidadeQuarto)
             {
                 Hospedes = hospedes;
             }
@@ -57,6 +63,7 @@ namespace DesafioProjetoHospedagem.Models
             valor = diasReservados*valorDiaria;
 
             valor = (diasReservados>=10?(valor-(valor*0.10M)):valor);
+
 
             return valor;
         }
