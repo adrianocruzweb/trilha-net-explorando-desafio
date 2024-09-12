@@ -19,8 +19,7 @@ namespace DesafioProjetoHospedagem.Models
         {
             Suite suite = new Suite();
 
-            int quantidadeHospedes = ObterQuantidadeHospedes(hospedes);
-
+            int quantidadeHospedes = ObterQuantidadeHospedes();
 
             bool capacidadeQuarto = true;
 
@@ -42,24 +41,22 @@ namespace DesafioProjetoHospedagem.Models
             Suite = suite;
         }
 
-        public int ObterQuantidadeHospedes(List<Pessoa> hospedes)
+        public int ObterQuantidadeHospedes()
         {
+            List<Pessoa> hospedes = Hospedes;
+
             return hospedes.Count();
         }
 
         public decimal CalcularValorDiaria()
         {
-            // TODO: Retorna o valor da diária
-            // Cálculo: DiasReservados X Suite.ValorDiaria
-            // *IMPLEMENTE AQUI*
-            decimal valor = 0;
+            decimal valorDiaria = Suite.ValorDiaria;
+            decimal diasReservados = DiasReservados;
 
-            // Regra: Caso os dias reservados forem maior ou igual a 10, conceder um desconto de 10%
-            // *IMPLEMENTE AQUI*
-            if (true)
-            {
-                valor = 0;
-            }
+            decimal valor = 0;
+            valor = diasReservados*valorDiaria;
+
+            valor = (diasReservados>=10?(valor-(valor*0.10M)):valor);
 
             return valor;
         }
