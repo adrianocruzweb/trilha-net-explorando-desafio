@@ -1,3 +1,5 @@
+using System.Reflection.Metadata;
+
 namespace DesafioProjetoHospedagem.Models
 {
     public class Reserva
@@ -19,12 +21,10 @@ namespace DesafioProjetoHospedagem.Models
 
             int quantidadeHospedes = ObterQuantidadeHospedes(hospedes);
 
-            if(suite.Capacidade < quantidadeHospedes)
-            {
-                throw new Exception("O quarto tem a capaciadade de: "+ suite.Capacidade +
-                " não é possivel colocar "+ quantidadeHospedes);
-            }
 
+            bool capacidadeQuarto = true;
+
+            capacidadeQuarto = suite.Capacidade < quantidadeHospedes;
 
             if (true)
             {
@@ -32,8 +32,8 @@ namespace DesafioProjetoHospedagem.Models
             }
             else
             {
-                // TODO: Retornar uma exception caso a capacidade seja menor que o número de hóspedes recebido
-                // *IMPLEMENTE AQUI*
+                throw new Exception("O quarto tem a capaciadade de: "+ suite.Capacidade +
+                " não é possivel colocar "+ quantidadeHospedes);
             }
         }
 
